@@ -1,0 +1,12 @@
+function diffArray(arr1, arr2) {
+ return  arr1.filter(x => x!==arr2.find(z=>z===x)) 
+          .concat(arr2.filter(x => x!==arr1.find(z=>z===x)))
+ 
+}
+
+diffArray( [1, 2, 3, 5], [1, 2, 3, 4, 5])
+
+
+
+
+

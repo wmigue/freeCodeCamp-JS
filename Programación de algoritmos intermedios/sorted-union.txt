@@ -1,0 +1,25 @@
+// Unión ordenada
+// Escribe una función que tome dos o más arreglos y devuelve un nuevo arreglo de valores únicos manteniendo el orden original de los arreglos proporcionados.
+// En otras palabras, todos los valores presentes de todos los arreglos deben incluirse en su orden original, pero sin duplicados en el arreglo final.
+// Los números únicos deben ser ordenados según su orden original, pero el arreglo final no debe ordenarse según el orden numérico.
+// Revisa las pruebas de afirmación para ver ejemplos.
+
+function uniteUnique(arr1, ...others) {
+  let arrResultante=  arr1.concat([...others]).flat()
+  arrResultante = new Set([...arrResultante])
+  arrResultante = Array.from(arrResultante)
+  
+  return arrResultante
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+
+
+
+// Esperando: uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]) debe devolver [1, 3, 2, 5, 4].
+// Esperando: uniteUnique([1, 2, 3], [5, 2, 1]) debe devolver [1, 2, 3, 5].
+// Esperando: uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8]) debe devolver [1, 2, 3, 5, 4, 6, 7, 8].
+// Esperando: uniteUnique([1, 3, 2], [5, 4], [5, 6]) debe devolver [1, 3, 2, 5, 4, 6].
+// Esperando: uniteUnique([1, 3, 2, 3], [5, 2, 1, 4], [2, 1]) debe devolver [1, 3, 2, 5, 4].
+

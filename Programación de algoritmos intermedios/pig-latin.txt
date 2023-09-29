@@ -1,0 +1,45 @@
+// Pig Latin (latin de los cerdos) es una manera de alterar las palabras en inglés. Las normas son las siguientes:
+// - Si una palabra comienza con una consonante, toma la primer consonante o grupo de consonantes, muévela al final de la palabra, y añade ay a ella.
+// - Si una palabra comienza con una vocal, solo añade way al final.
+
+// utilizamos la expresión regular /^[^AEIOUaeiou0-9\W_]/. Aquí hay una explicación de la expresión regular:
+//   ^: Coincide con el comienzo de la cadena.
+//  [^AEIOUaeiou0-9\W_]: El corchete [^...] coincide con cualquier carácter que no esté en la lista especificada. En este caso, estamos especificando que no queremos coincidir con vocales (mayúsculas o minúsculas), dígitos (0-9), caracteres no alfanuméricos (\W),
+
+function translatePigLatin(str) {
+  function condicion(palabra) {
+    return /^[^AEIOUaeiou\W_]/.test(palabra);
+  }
+
+  if (condicion(str)) {
+    let vocalEncontrada = false;
+    const splited = str.split('');
+    const resto = splited
+      .filter((x) => {
+        if (condicion(x) && !vocalEncontrada) {
+          return x;
+        } else {
+          vocalEncontrada = true;
+        }
+      })
+      .join('');
+    return splited.splice(resto.length, 1000).join('') + resto + 'ay';
+  }else{
+    return str+'way'
+  }
+}
+
+
+translatePigLatin("algorithm")
+// translatePigLatin("california") debe devolver la cadena aliforniacay.
+// Aprobado: translatePigLatin("paragraphs") debe devolver la cadena aragraphspay.
+//  translatePigLatin("glove") debe devolver la cadena oveglay.
+//  translatePigLatin("algorithm") debe devolver la cadena algorithmway.
+//  translatePigLatin("eight") debe devolver la cadena eightway.
+//  Debes manejar las palabras en donde la primera vocal viene en el centro de la palabra. translatePigLatin("schwartz") debe devolver la cadena artzschway.
+//  Debes manejar las palabras sin vocales. translatePigLatin("rhythm") debe devolver la cadena rhythmay.
+
+
+
+
+

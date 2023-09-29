@@ -1,0 +1,29 @@
+
+
+//Convierte una cadena a spinal case. Spinal case significa todas-las-palabras-en-minúscula-unidas-por-guiones.
+function spinalCase(str) {
+    //return str.toLowerCase().split(' ')
+    //return str.toLowerCase().split('_')
+    //return str.split(/(?=[A-Z])/)
+    return str.split(/(?=[A-Z])|[ -_]/)
+      .map(x=>x.toLowerCase())
+      .join("-")
+
+
+}
+
+
+spinalCase('This Is Spinal Tap');
+
+//debe devolver la cadena this-is-spinal-tap.
+spinalCase("thisIsSpinalTap") 
+
+//debe devolver la cadena the-andy-griffith-show.
+spinalCase("The_Andy_Griffith_Show") 
+
+//debe devolver la cadena teletubbies-say-eh-oh.
+spinalCase("Teletubbies say Eh-oh") 
+
+//debe devolver la cadena all-the-small-things.
+spinalCase("AllThe-small Things") 
+

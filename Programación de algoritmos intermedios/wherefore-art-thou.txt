@@ -1,0 +1,36 @@
+// Crea una función que busque a través de un arreglo de objetos (primer argumento) y devuelva un arreglo de todos los objetos que tengan pares de nombre y valor coincidentes (segundo argumento). Cada par de nombre y valor del objeto fuente tiene que estar presente en el objeto de la colección si se va a incluir en el arreglo devuelto.
+// Por ejemplo, si el primer argumento es [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], y el segundo argumento es { last: "Capulet" }, entonces debes devolver el tercer objeto del arreglo (el primer argumento), porque contiene el nombre y su valor, el cual fue pasado como segundo argumento.
+function whatIsInAName(collection, source) {
+  const resultado = collection.filter(objeto => {
+    for (let key in source) {
+      if (!(key in objeto) || source[key] !== objeto[key]) { //debe coincidir todas las propiedades del source en cada objeto para entrar a este bucle logicamente.
+        return false //no lo agrega al resultado
+      }
+    }
+    return true //si lo agrega al resultado
+  })
+
+  return resultado
+}
+
+
+
+
+//debe devolver [{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }].
+whatIsInAName(
+               [
+                 { "apple": 1 }, 
+                 { "apple": 1 }, 
+                 { "apple": 1, "bat": 2 }
+               ], 
+                { "apple": 1 }
+             ) 
+
+//debe devolver [{ "apple": 1, "bat": 2, "cookie": 2 }].
+// whatIsInAName(
+//   [{ apple: 1, bat: 2 }, { apple: 1 }, { apple: 1, bat: 2, cookie: 2 }],
+//   { apple: 1, cookie: 2 }
+// );
+
+// debe devolver [{ "apple": 1, "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }].
+// whatIsInAName([{ "apple": 1, "bat": 2 }, { "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "bat": 2 })

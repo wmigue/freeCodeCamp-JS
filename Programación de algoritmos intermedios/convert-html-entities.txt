@@ -1,0 +1,29 @@
+// Convierte entidades HTML
+// Convierte los caracteres &, <, >, " (dobles comillas), y ' (apóstrofo), en un cadena con su correspondiente entidad HTML.
+
+function convertHTML(str) {
+
+ const result = str.split("").map(x=>{
+  return x ==='&' ? '&amp;' : 
+         x === '<' ? '&lt;' : 
+         x === '>' ? '&gt;' : 
+         x === '"' ? '&quot;' : 
+         x === '<' ? '&lt;' : 
+         x === "'" ? '&apos;': 
+         x === '<>' ? '&lt;&gt;' : x 
+ }).join("")
+ 
+ return result
+
+}
+
+convertHTML('Dolce & Gabbana');
+convertHTML('Stuff in "quotation marks"')
+
+// convertHTML("Dolce & Gabbana") debe devolver la cadena Dolce &amp; Gabbana.
+// Aprobado: convertHTML("Hamburgers < Pizza < Tacos") debe devolver la cadena Hamburgers &lt; Pizza &lt; Tacos.
+// Aprobado: convertHTML("Sixty > twelve") debe devolver la cadena Sixty &gt; twelve.
+// Aprobado: convertHTML('Stuff in "quotation marks"') debe devolver la cadena Stuff in &quot;quotation marks&quot;.
+// Aprobado: convertHTML("Schindler's List") debe devolver la cadena Schindler&apos;s List.
+// Aprobado: convertHTML("<>") debe devolver la cadena &lt;&gt;.
+// Aprobado: convertHTML("abc") debe devolver la cadena abc.

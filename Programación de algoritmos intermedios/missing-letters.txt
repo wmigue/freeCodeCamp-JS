@@ -1,0 +1,36 @@
+// Letras faltantes
+// Encuentra la letra que falta en la siguiente cadena de letras y devuélvela.
+// Si todas las letras están presentes en la cadena, devuelve undefined.
+
+function fearNotLetter(str) {
+  
+  const faltaAlgunaLetra = !'abcdefghijklmnopqrstuvwxyz'.includes(str) 
+  
+  const strArr = str.split('')
+  
+  const diccionario = 'abcdefghijklmnopqrstuvwxyz'.split('')
+
+  const posInicio = diccionario.indexOf(str[0])
+  
+  const analizarDesde = diccionario.splice(posInicio) 
+
+  if(faltaAlgunaLetra){
+      return analizarDesde.find((x,i)=>x!==strArr[i])
+  }else{
+    return undefined
+  }
+    
+}
+
+fearNotLetter('stvwx');
+fearNotLetter('abce');
+// fearNotLetter('abcdefghjklmno');
+// fearNotLetter("abce") debe devolver la cadena d.
+// Esperando: fearNotLetter("abcdefghjklmno") debe devolver la cadena i.
+// Esperando: fearNotLetter("stvwx") debe devolver la cadena u.
+// Esperando: fearNotLetter("bcdf") debe devolver la cadena e.
+// Esperando: fearNotLetter("abcdefghijklmnopqrstuvwxyz") debe devolver undefined.
+
+
+
+
